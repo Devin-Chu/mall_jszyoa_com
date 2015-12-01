@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Menu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="styles/layout.css" rel="stylesheet" type="text/css">
+{insert_scripts files="jquery-1.9.1.min.js,menu.js"}
+<div class="leftmenu">
+  <ul id="menu">
+  
+    {foreach from=$menus item=menu key=k}
+        {if $menu.action}
+              <li><a href="{$menu.action}">{$menu.label}</a>
+              <ul>
+        {else}
+        <li>
+            <a href="#">{$menu.label}</a>
+            <ul>
+            {if $menu.children}
+            
+                {foreach from=$menu.children item=child}
+                	<li><a href="{$child.action}" target="main-frame">{$child.label}</a></li>
+                {/foreach}
+               
+            {/if}
+        </li>
+        {/if}
+         </ul>
+    {/foreach}
+  
+  
+  
+    <li><a href="#">商品管理</a>
+      <ul>
+        <li>
+           <a href="shangping_list.html" target="mainFrame" style="box-shadow: 1px 5px 5px 0px #ddd inset;">
+              商品列表
+           </a>
+        </li>
+        <li><a href="add-shangping.html" target="mainFrame">添加新商品</a></li>
+        <li><a href="shangping_fenlei.html" target="mainFrame">商品分类</a></li>
+        <li><a href="user_comments.html" target="mainFrame">用户评论</a></li>
+        <li><a href="shangping_pinpai.html" target="mainFrame">商品品牌</a></li>
+        <li><a href="shangping_type.html" target="mainFrame">商品类型</a></li>
+        <li><a href="shangping_huishouzhan.html" target="mainFrame">商品回收站</a></li>
+        <li><a href="tupianbiliangchuli.html" target="mainFrame">图片批量处理</a></li>
+        <li><a href="shangpinpiliangshangchuang.html" target="mainFrame">商品批量上传</a></li>
+        <li><a href="shangpinpiliangdaochu.html" target="mainFrame">商品批量导出</a></li>
+        <li><a href="shangpinpiliangxiugai.html" target="mainFrame">商品批量修改</a></li>
+        <li><a href="shengchengshangpindaima.html" target="mainFrame">生成商品代码</a></li>
+        <li><a href="biaoqian_list.html" target="mainFrame">标签管理</a></li>
+        <li><a href="xunishangping_list.html" target="mainFrame">虚拟商品列表</a></li>
+        <li><a href="add-shangping.html" target="mainFrame">添加虚拟商品</a></li>
+        <li><a href="genggaijiamichuang.html" target="mainFrame">更改加密串</a></li>
+        <li><a href="shangping_zidongshangxiajia.html" target="mainFrame">商品自动上下架</a></li>
+      </ul>
+    </li>
+  </ul>
+ </div>
+<script type="text/javascript">
+function toggleMenu(){
+  imgArrow = $('#img');
+  admin_menubar_width = 180;
+  admin_menubar = $('.leftmenu');
+
+  if (admin_menubar.width() == admin_menubar_width){
+    admin_menubar.width(0);
+  $(".drag").css('left', 0);
+  $(".main").css('left', 10);
+  imgArrow.attr('src', "images/arrow_right.gif");
+  } else {
+    admin_menubar.width(admin_menubar_width);
+  $(".drag").css('left', admin_menubar_width);
+  $(".main").css('left', admin_menubar_width + 10);
+  imgArrow.attr('src', "images/arrow_left.gif");
+  }
+}
+</script>
+</body>
+</html>
